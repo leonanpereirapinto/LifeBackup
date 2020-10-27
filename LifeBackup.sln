@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeBackup.Api", "LifeBackup.Api\LifeBackup.Api.csproj", "{BF045F41-65E0-4EED-83EC-05C966B0F14D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeBackup.Core", "LifeBackup.Core\LifeBackup.Core.csproj", "{0B749BE8-AB28-4AFC-8453-A9B5745E2665}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeBackup.Infrastructure", "LifeBackup.Infrastructure\LifeBackup.Infrastructure.csproj", "{33BE08AE-86DF-4C5A-8054-9A05598FD2B2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{BF045F41-65E0-4EED-83EC-05C966B0F14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF045F41-65E0-4EED-83EC-05C966B0F14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF045F41-65E0-4EED-83EC-05C966B0F14D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B749BE8-AB28-4AFC-8453-A9B5745E2665}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B749BE8-AB28-4AFC-8453-A9B5745E2665}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B749BE8-AB28-4AFC-8453-A9B5745E2665}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B749BE8-AB28-4AFC-8453-A9B5745E2665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33BE08AE-86DF-4C5A-8054-9A05598FD2B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33BE08AE-86DF-4C5A-8054-9A05598FD2B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33BE08AE-86DF-4C5A-8054-9A05598FD2B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33BE08AE-86DF-4C5A-8054-9A05598FD2B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
