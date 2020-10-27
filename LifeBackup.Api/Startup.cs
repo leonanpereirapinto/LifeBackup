@@ -1,4 +1,5 @@
 ﻿using Amazon.S3;
+using LifeBackup.Core.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,7 @@ namespace LifeBackup.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAWSService<IAmazonS3>(_configuration.GetAWSOptions());
+            services.AddSingleton<IBucketRepository, IBucketRepository>();
 
             services.AddMvc();
         }
