@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using LifeBackup.Core.Communication.Bucket;
 using LifeBackup.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +35,20 @@ namespace LifeBackup.Api.Controllers
             if (result == null)
             {
                 return BadRequest();
+            }
+
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("list")]
+        public async Task<ActionResult<IEnumerable<ListS3BucketsResponse>>> ListS3Buckets()
+        {
+            var result = await _bucketRepository.ListBuckets();
+
+            if (result == null)
+            {
+                return NotFound();
             }
 
             return Ok(result);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Amazon.S3;
@@ -38,6 +39,17 @@ namespace LifeBackup.Infrastructure.Repositories
                 BucketName = bucketName,
                 RequestId = response.ResponseMetadata.RequestId
             };
+        }
+
+        public async Task<IEnumerable<ListS3BucketsResponse>> ListBuckets()
+        {
+            var response = await _s3Client.ListBucketsAsync();
+
+            return response.Buckets.Select(b => new ListS3BucketsResponse
+            {
+                BucketName = b.BucketName,
+                CreationDate = b.CreationDate
+            });
         }
     }
 }
