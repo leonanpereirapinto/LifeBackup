@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using LifeBackup.Core.Communication.Bucket;
 using LifeBackup.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp;
 
 namespace LifeBackup.Api.Controllers
 {
@@ -52,6 +53,15 @@ namespace LifeBackup.Api.Controllers
             }
 
             return Ok(result);
+        }
+
+        [HttpDelete]
+        [Route("delete/{bucketName}")]
+        public async Task<ActionResult> DeleteS3Bucket([FromRoute] string bucketName)
+        {
+            await _bucketRepository.DeleteBucket(bucketName);
+            
+            return Ok();
         }
     }
 }

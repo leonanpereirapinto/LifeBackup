@@ -11,5 +11,7 @@ namespace LifeBackup.Core.Interfaces
         Task<CreateBucketResponse> CreateBucket(string bucketName);
 
         Task<IEnumerable<ListS3BucketsResponse>> ListBuckets();
+
+        Task DeleteBucket(string bucketName);
     }
 }

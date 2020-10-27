@@ -51,5 +51,10 @@ namespace LifeBackup.Infrastructure.Repositories
                 CreationDate = b.CreationDate
             });
         }
+
+        public async Task DeleteBucket(string bucketName)
+        {
+            await _s3Client.DeleteBucketAsync(bucketName);
+        }
     }
 }
