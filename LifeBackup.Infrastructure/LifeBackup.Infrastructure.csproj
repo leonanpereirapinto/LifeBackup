@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.5.3.8" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\LifeBackup.Core\LifeBackup.Core.csproj" />
   </ItemGroup>
 
