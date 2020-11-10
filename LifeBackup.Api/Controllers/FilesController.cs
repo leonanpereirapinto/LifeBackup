@@ -47,5 +47,14 @@ namespace LifeBackup.Api.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet]
+        [Route("{bucketName}/download/{fileName}")]
+        public async Task<IActionResult> DownloadFile(string bucketName, string fileName)
+        {
+            await _filesRepository.DownloadFile(bucketName, fileName);
+
+            return Ok();
+        }
     }
 }

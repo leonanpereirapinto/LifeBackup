@@ -72,5 +72,22 @@ namespace LifeBackup.Infrastructure.Repositories
             });
 
         }
+
+        public async Task DownloadFile(string bucketName, string fileName)
+        {
+            var pathAndFileName = $"C:\\S3Temp\\{fileName}";
+
+            var downloadRequest = new TransferUtilityDownloadRequest
+            {
+                BucketName = bucketName,
+                Key = fileName,
+                FilePath = pathAndFileName
+            };
+
+            using (var transferUtility = new TransferUtility(_s3Client))
+            {
+                await transferUtility.DownloadAsync(downloadRequest);
+            }
+        }
     }
 }

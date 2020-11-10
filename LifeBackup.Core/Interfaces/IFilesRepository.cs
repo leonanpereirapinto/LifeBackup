@@ -10,5 +10,7 @@ namespace LifeBackup.Core.Interfaces
         Task<AddFileResponse> UploadFiles(string bucketName, IList<IFormFile> formFiles);
 
         Task<IEnumerable<ListFilesResponse>> ListFiles(string bucketName);
+
+        Task DownloadFile(string bucketName, string fileName);
     }
 }
