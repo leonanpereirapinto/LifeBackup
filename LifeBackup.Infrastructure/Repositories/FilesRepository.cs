@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Amazon.S3;
@@ -55,6 +56,20 @@ namespace LifeBackup.Infrastructure.Repositories
             {
                 PreSignedUrl = response
             };
+
+        }
+
+        public async Task<IEnumerable<ListFilesResponse>> ListFiles(string bucketName)
+        {
+            var response = await _s3Client.ListObjectsAsync(bucketName);
+
+            return response.S3Objects.Select(b => new ListFilesResponse
+            {
+                BucketName = b.BucketName,
+                Key = b.Key,
+                Owner = b.Owner.DisplayName,
+                Size = b.Size
+            });
 
         }
     }
