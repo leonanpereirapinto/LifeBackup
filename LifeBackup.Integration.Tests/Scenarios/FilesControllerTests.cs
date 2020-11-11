@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using Amazon.Extensions.NETCore.Setup;
 using Amazon.Runtime;
 using Amazon.S3;
@@ -34,6 +35,13 @@ namespace LifeBackup.Integration.Tests.Scenarios
                     });
                 });
             }).CreateClient();
+
+            Task.Run(CreateBucket).Wait();
+        }
+
+        private async Task CreateBucket()
+        {
+            await _client.PostAsJsonAsync("api/bucket/create/testS3Bucket","testS3Bucket");
         }
     }
 }
