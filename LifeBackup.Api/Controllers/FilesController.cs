@@ -65,5 +65,14 @@ namespace LifeBackup.Api.Controllers
 
             return Ok(response);
         }
+
+        [HttpPost]
+        [Route("{bucketName}/addJsonObject")]
+        public async Task<IActionResult> AddJsonObject(string bucketName, AddJsonObjectRequest request)
+        {
+            await _filesRepository.AddJsonObject(bucketName, request);
+
+            return Ok();
+        }
     }
 }

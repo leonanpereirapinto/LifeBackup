@@ -9,6 +9,7 @@ using Amazon.S3.Transfer;
 using LifeBackup.Core.Communication.Files;
 using LifeBackup.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace LifeBackup.Infrastructure.Repositories
 {
@@ -105,6 +106,22 @@ namespace LifeBackup.Infrastructure.Repositories
             {
                 NumberOfDeletedObjects = response.DeletedObjects.Count,
             };
+        }
+
+        public async Task AddJsonObject(string bucketName, AddJsonObjectRequest request)
+        {
+            var createdOnUtc = DateTime.UtcNow;
+
+            var s3Key = $"{createdOnUtc:yyyy}/{createdOnUtc:MM}/{createdOnUtc:dd}/{request.Id}";
+
+            var putObjectRequest = new PutObjectRequest
+            {
+                BucketName = bucketName,
+                Key = s3Key,
+                ContentBody = JsonConvert.SerializeObject(request)
+            };
+
+            await _s3Client.PutObjectAsync(putObjectRequest);
         }
     }
 }
