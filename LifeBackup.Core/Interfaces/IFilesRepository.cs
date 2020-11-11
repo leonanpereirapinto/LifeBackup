@@ -14,5 +14,6 @@ namespace LifeBackup.Core.Interfaces
         Task DownloadFile(string bucketName, string fileName);
         Task<DeleteFileResponse> DeleteFile(string bucketName, string fileName);
         Task AddJsonObject(string bucketName, AddJsonObjectRequest request);
+        Task<GetJsonObjectResponse> GetJsonObject(string bucketName, string fileName);
     }
 }
