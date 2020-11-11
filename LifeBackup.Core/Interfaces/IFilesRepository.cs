@@ -12,5 +12,6 @@ namespace LifeBackup.Core.Interfaces
         Task<IEnumerable<ListFilesResponse>> ListFiles(string bucketName);
 
         Task DownloadFile(string bucketName, string fileName);
+        Task<DeleteFileResponse> DeleteFile(string bucketName, string fileName);
     }
 }

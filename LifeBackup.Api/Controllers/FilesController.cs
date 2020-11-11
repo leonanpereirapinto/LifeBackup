@@ -56,5 +56,14 @@ namespace LifeBackup.Api.Controllers
 
             return Ok();
         }
+
+        [HttpDelete]
+        [Route("{bucketName}/delete/{fileName}")]
+        public async Task<ActionResult<DeleteFileResponse>> DeleteFile(string bucketName, string fileName)
+        {
+            var response = await _filesRepository.DeleteFile(bucketName, fileName);
+
+            return Ok(response);
+        }
     }
 }

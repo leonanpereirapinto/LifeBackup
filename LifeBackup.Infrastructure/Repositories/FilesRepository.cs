@@ -89,5 +89,22 @@ namespace LifeBackup.Infrastructure.Repositories
                 await transferUtility.DownloadAsync(downloadRequest);
             }
         }
+
+        public async Task<DeleteFileResponse> DeleteFile(string bucketName, string fileName)
+        {
+            var multiObjectDeleteRequest = new DeleteObjectsRequest
+            {
+                BucketName = bucketName
+            };
+
+            multiObjectDeleteRequest.AddKey(fileName);
+
+            var response = await _s3Client.DeleteObjectsAsync(multiObjectDeleteRequest);
+
+            return new DeleteFileResponse
+            {
+                NumberOfDeletedObjects = response.DeletedObjects.Count,
+            };
+        }
     }
 }
