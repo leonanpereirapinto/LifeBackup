@@ -1,4 +1,5 @@
-﻿using Amazon.Extensions.NETCore.Setup;
+﻿using System;
+using Amazon.Extensions.NETCore.Setup;
 using Amazon.Runtime;
 using Amazon.S3;
 using LifeBackup.Api;
@@ -111,6 +112,21 @@ namespace LifeBackup.Integration.Tests.Scenarios
             await UploadFileToS3Bucket();
 
             var response = await _client.DeleteAsync($"api/files/testS3Bucket/delete/{filename}");
+            
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task When_AddJsonObject_endpoint_is_hit_we_are_returned_ok_status()
+        {
+            var jsonObjectRequest = new AddJsonObjectRequest
+            {
+                Id = Guid.NewGuid(),
+                Data = "Test-Data",
+                TimeSent = DateTime.UtcNow
+            };
+
+            var response = await _client.PostAsJsonAsync("api/files/testS3Bucket/addJsonObject", jsonObjectRequest);
             
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
