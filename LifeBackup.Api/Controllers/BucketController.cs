@@ -32,7 +32,6 @@ namespace LifeBackup.Api.Controllers
 
             var result = await _bucketRepository.CreateBucket(bucketName);
 
-
             if (result == null)
             {
                 return BadRequest();

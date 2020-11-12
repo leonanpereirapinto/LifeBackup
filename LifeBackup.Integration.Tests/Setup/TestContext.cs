@@ -66,7 +66,7 @@ namespace LifeBackup.Integration.Tests.Setup
 
             if (isWindows)
             {
-                return "npipe://.pipe/docker_engine";
+                return "npipe://./pipe/docker_engine";
             }
 
             var isLinux = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
