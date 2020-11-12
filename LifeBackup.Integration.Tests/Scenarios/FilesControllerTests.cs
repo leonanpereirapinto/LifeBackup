@@ -90,5 +90,17 @@ namespace LifeBackup.Integration.Tests.Scenarios
             
             Assert.NotNull(result);
         }
+
+        [Fact]
+        public async Task When_DownloadFiles_endpoint_is_hit_we_are_returned_ok_status()
+        {
+            const string filename = @"IntegrationTest.jpg";
+
+            await UploadFileToS3Bucket();
+
+            var response = await _client.GetAsync($"api/files/testS3Bucket/download/{filename}");
+            
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
     }
 }
