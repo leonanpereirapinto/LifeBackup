@@ -9,6 +9,8 @@ using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using LifeBackup.Core.Communication.Files;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace LifeBackup.Integration.Tests.Scenarios
@@ -70,6 +72,23 @@ namespace LifeBackup.Integration.Tests.Scenarios
             formData.Dispose();
 
             return response;
+        }
+        
+        [Fact]
+        public async Task When_ListFiles_endpoint_is_hit_our_result_is_not_null()
+        {
+            await UploadFileToS3Bucket();
+
+            var response = await _client.GetAsync("api/files/testS3Bucket/list");
+
+            ListFilesResponse[] result;
+
+            using (var content = response.Content.ReadAsStringAsync())
+            {
+                result = JsonConvert.DeserializeObject<ListFilesResponse[]>(await content);
+            }
+            
+            Assert.NotNull(result);
         }
     }
 }
