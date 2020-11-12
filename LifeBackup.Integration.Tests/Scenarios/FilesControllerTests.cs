@@ -102,5 +102,17 @@ namespace LifeBackup.Integration.Tests.Scenarios
             
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
+
+        [Fact]
+        public async Task When_DeleteFile_endpoint_is_hit_we_are_returned_ok_status()
+        {
+            const string filename = @"IntegrationTest.jpg";
+
+            await UploadFileToS3Bucket();
+
+            var response = await _client.DeleteAsync($"api/files/testS3Bucket/delete/{filename}");
+            
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
     }
 }
