@@ -84,6 +84,7 @@ namespace LifeBackup.Integration.Tests.Setup
             if (_containerId != null)
             {
                 await _dockerClient.Containers.KillContainerAsync(_containerId, new ContainerKillParameters());
+                await _dockerClient.Containers.RemoveContainerAsync(_containerId, new ContainerRemoveParameters());
             }
         }
     }
