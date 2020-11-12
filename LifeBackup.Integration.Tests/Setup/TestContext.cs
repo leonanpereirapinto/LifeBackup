@@ -43,16 +43,16 @@ namespace LifeBackup.Integration.Tests.Setup
                 Image = ContainerImageUri,
                 ExposedPorts = new Dictionary<string, EmptyStruct>
                 {
-                    { "9003", default }
+                    { "4566", default }
                 },
                 HostConfig = new HostConfig
                 {
                     PortBindings = new Dictionary<string, IList<PortBinding>>
                     {
-                        { "9003", new List<PortBinding> { new PortBinding { HostPort = "9003" }}}
+                        { "4566", new List<PortBinding> { new PortBinding { HostPort = "4566" }}}
                     }
                 },
-                Env = new List<string> { "SERVICES=s3:9003"}
+                Env = new List<string> { "SERVICES=s3:4566"}
             });
 
             _containerId = response.ID;

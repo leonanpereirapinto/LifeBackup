@@ -31,7 +31,7 @@ namespace LifeBackup.Integration.Tests.Scenarios
                     {
                         DefaultClientConfig =
                         {
-                            ServiceURL = "http://localhost:9003"
+                            ServiceURL = "http://localhost:4566"
                         },
                         Credentials = new BasicAWSCredentials("FAKE", "FAKE")
                     });
